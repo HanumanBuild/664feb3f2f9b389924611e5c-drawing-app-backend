@@ -14,6 +14,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
+const userRoutes = require('./routes/userRoutes');
+const drawingRoutes = require('./routes/drawingRoutes');
+
+app.use('/api/users', userRoutes);
+app.use('/api/drawings', drawingRoutes);
+
 app.get('/', (req, res) => {
   res.send('Welcome to the Drawing App Backend');
 });
